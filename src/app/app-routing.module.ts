@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { Shell } from '@app/shell/shell.service';
 import { ShouldLoginComponent } from './should-login.component';
 
@@ -8,17 +8,17 @@ const routes: Routes = [
     {
       path: 'employee',
       loadChildren: () => import('./features/employee/employee.module').then((m) => m.EmployeeModule),
-      //data: {role: 'Manager'},
+      // data: {role: 'Manager'},
     },
     {
       path: 'position',
       loadChildren: () => import('./features/position/position.module').then((m) => m.PositionModule),
-      //data: {role: 'Manager'},
+      // data: {role: 'Manager'},
     },
     {
       path: 'admin',
       loadChildren: () => import('./features/admin/admin.module').then((m) => m.AdminModule),
-      //data: {role: 'Manager'},
+      // data: {role: 'Manager'},
     },
     {
       path: 'manager',

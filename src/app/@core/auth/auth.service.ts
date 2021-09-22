@@ -9,9 +9,9 @@ import { filter, map } from 'rxjs/operators';
 @Injectable()
 export class AuthService {
   private isAuthenticatedSubject$ = new BehaviorSubject<boolean>(false);
-  public isAuthenticated$ = this.isAuthenticatedSubject$.asObservable();
-
   private isDoneLoadingSubject$ = new ReplaySubject<boolean>();
+
+  public isAuthenticated$ = this.isAuthenticatedSubject$.asObservable();
   public isDoneLoading$ = this.isDoneLoadingSubject$.asObservable();
 
   /**
@@ -29,11 +29,6 @@ export class AuthService {
     this.isDoneLoading$,
   ]).pipe(map((values) => values.every((b) => b)));
 
-  private navigateToLoginPage() {
-    // TODO: Remember current URL
-    this.router.navigateByUrl('/should-login');
-  }
-
   constructor(private oauthService: OAuthService, private router: Router) {
     // Useful for debugging:
     this.oauthService.events.subscribe((event) => {
@@ -46,7 +41,8 @@ export class AuthService {
 
     // This is tricky, as it might cause race conditions (where access_token is set in another
     // tab before everything is said and done there.
-    // TODO: Improve this setup. See: https://github.com/jeroenheijmans/sample-angular-oauth2-oidc-with-auth-guards/issues/2
+    // TODO: Improve this setup.
+    //  See: https://github.com/jeroenheijmans/sample-angular-oauth2-oidc-with-auth-guards/issues/2
     window.addEventListener('storage', (event) => {
       // The `key` is `null` if the event was caused by `.clear()`
       if (event.key !== 'access_token' && event.key !== null) {
@@ -176,9 +172,11 @@ export class AuthService {
   public logout() {
     this.oauthService.logOut();
   }
+
   public refresh() {
     this.oauthService.silentRefresh();
   }
+
   public hasValidToken() {
     return this.oauthService.hasValidAccessToken();
   }
@@ -188,16 +186,25 @@ export class AuthService {
   public get accessToken() {
     return this.oauthService.getAccessToken();
   }
+
   public get refreshToken() {
     return this.oauthService.getRefreshToken();
   }
+
   public get identityClaims() {
     return this.oauthService.getIdentityClaims();
   }
+
   public get idToken() {
     return this.oauthService.getIdToken();
   }
+
   public get logoutUrl() {
     return this.oauthService.logoutUrl;
+  }
+
+  private navigateToLoginPage() {
+    // TODO: Remember current URL
+    this.router.navigateByUrl('/should-login');
   }
 }

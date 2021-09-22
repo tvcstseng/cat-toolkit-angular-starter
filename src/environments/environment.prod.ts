@@ -18,13 +18,13 @@ export const environment = {
 
   // IdentityServer/OIDC Configuration
   // Oidc_Issuer: 'https://localhost:44310',  //this is for IdentityServer4 Admin UI running on localhost
-  Oidc_Issuer: 'https://cat-token-identity.azurewebsites.net', //demo identityserver4 in Azure
+  Oidc_Issuer: 'http://localhost:8080/auth/realms/VoucherKeycloak', //demo identityserver4 in Azure
   Oidc_ClientId: 'AngularStarterKit', // client id setup in IdentityServer4
   Oidc_responseType: 'code', //code flow PKCE,
   Oidc_redirectUri: window.location.origin + '/auth-callback',
   Oidc_postLogoutRedirectUri: window.location.origin,
   Oidc_silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
-  Oidc_scope: 'openid profile email roles app.api.employeeprofile.read', // Ask offline_access to support refresh token refreshes
+  Oidc_scope: 'openid profile email roles user_client_scope', // Ask offline_access to support refresh token refreshes
   Oidc_useSilentRefresh: true, // Needed for Code Flow to suggest using iframe-based refreshes
   Oidc_silentRefreshTimeout: 5000, // For faster testing
   Oidc_timeoutFactor: 0.25, // For faster testing

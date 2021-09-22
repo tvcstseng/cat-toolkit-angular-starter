@@ -21,6 +21,7 @@ export class RoleGuard implements CanActivate {
 
             this.userProfile = this.authService.identityClaims;
             if (!!this.userProfile.role) {
+              console.warn(this.authService.identityClaims);
               const userRoles = this.userProfile.role;
 
               if (userRoles.includes(routeRoles)) {
