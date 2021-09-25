@@ -6,9 +6,19 @@ import { ShouldLoginComponent } from './should-login.component';
 const routes: Routes = [
   Shell.childRoutes([
     {
+      path: 'promoter',
+      loadChildren: () => import('./features/promoter/promoter.module').then((m) => m.PromoterModule),
+      // data: {role: 'Promoter'},
+    },
+    {
+      path: 'booker',
+      loadChildren: () => import('./features/booker/booker.module').then((m) => m.BookerModule),
+      // data: {role: 'Booker'},
+    },
+    {
       path: 'employee',
       loadChildren: () => import('./features/employee/employee.module').then((m) => m.EmployeeModule),
-      // data: {role: 'Manager'},
+      // data: {role: 'Employee'},
     },
     {
       path: 'position',

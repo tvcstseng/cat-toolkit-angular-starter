@@ -17,6 +17,7 @@ import { FallbackComponent } from './fallback.component';
 import { ShouldLoginComponent } from './should-login.component';
 
 import { NgHttpLoaderModule } from 'ng-http-loader';
+
 @NgModule({
   imports: [
     BrowserModule,

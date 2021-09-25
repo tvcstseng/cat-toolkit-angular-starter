@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ManagerComponent } from './manager.component';
 import { AuthGuard } from '@app/@core/auth/auth-guard.service';
 import { RoleGuard } from '@app/@core/auth/role-guard.service';
+import { PromoterComponent } from '@app/features/promoter/promoter.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ManagerComponent,
+    component: PromoterComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
-      role: 'Manager',
+      role: 'Promoter',
     },
   },
 ];
@@ -19,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ManagerRoutingModule {}
+export class PromoterRoutingModule {}
