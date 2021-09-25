@@ -4,6 +4,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, Route
 import { Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { ToastService } from '@app/services/toast.service';
+import { environment } from '@env/environment';
 
 @Injectable()
 export class RoleGuard implements CanActivate {
@@ -20,9 +21,9 @@ export class RoleGuard implements CanActivate {
             const routeRoles = route.data.role;
 
             this.userProfile = this.authService.identityClaims;
-            if (!!this.userProfile.role) {
-              console.warn(this.authService.identityClaims);
-              const userRoles = this.userProfile.role;
+            // console.warn(this.userProfile.resource_access.registration-client.roles);
+            if (!!this.userProfile.resource_access[environment.Oidc_ClientId].roles) {
+              const userRoles = this.userProfile.resource_access[environment.Oidc_ClientId].roles;
 
               if (userRoles.includes(routeRoles)) {
                 // user's roles contains route's role

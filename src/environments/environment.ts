@@ -29,7 +29,7 @@ export const environment = {
   Oidc_redirectUri: window.location.origin + '/auth-callback',
   Oidc_postLogoutRedirectUri: window.location.origin,
   Oidc_silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
-  Oidc_scope: 'openid profile email roles user_client_scope', // Ask offline_access to support refresh token refreshes
+  Oidc_scope: 'openid profile email roles', // Ask offline_access to support refresh token refreshes
   Oidc_useSilentRefresh: true, // Needed for Code Flow to suggest using iframe-based refreshes
   Oidc_silentRefreshTimeout: 50000, // For faster testing
   Oidc_timeoutFactor: 0.25, // For faster testing

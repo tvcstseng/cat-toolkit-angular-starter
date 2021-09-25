@@ -19,7 +19,7 @@ export const environment = {
   // IdentityServer/OIDC Configuration
   // Oidc_Issuer: 'https://localhost:44310',  //this is for IdentityServer4 Admin UI running on localhost
   Oidc_Issuer: 'http://localhost:8080/auth/realms/VoucherKeycloak', //demo identityserver4 in Azure
-  Oidc_ClientId: 'AngularStarterKit', // client id setup in IdentityServer4
+  Oidc_ClientId: 'registration-client', // client id setup in IdentityServer4
   Oidc_responseType: 'code', //code flow PKCE,
   Oidc_redirectUri: window.location.origin + '/auth-callback',
   Oidc_postLogoutRedirectUri: window.location.origin,
