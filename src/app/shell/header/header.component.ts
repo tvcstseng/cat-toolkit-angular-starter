@@ -14,6 +14,10 @@ export class HeaderComponent implements OnInit {
   isAuthenticated: Observable<boolean>;
 
   hasRolePromoter$: Observable<boolean>;
+  hasRoleBooker$: Observable<boolean>;
+  hasRoleEmployee$: Observable<boolean>;
+  hasRoleManager$: Observable<boolean>;
+  hasRoleHrAdmin$: Observable<boolean>;
 
   constructor(private authService: AuthService) {
     this.isAuthenticated = authService.isAuthenticated$;
@@ -21,6 +25,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.hasRolePromoter$ = this.authService.canActivate('Promoter');
+    this.hasRoleBooker$ = this.authService.canActivate('Booker');
+    this.hasRoleEmployee$ = this.authService.canActivate('Employee');
+    this.hasRoleManager$ = this.authService.canActivate('Manager');
+    this.hasRoleHrAdmin$ = this.authService.canActivate('HrAdmin');
   }
 
   toggleMenu() {
