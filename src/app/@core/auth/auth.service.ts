@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { OAuthErrorEvent, OAuthService } from 'angular-oauth2-oidc';
 import { BehaviorSubject, combineLatest, Observable, ReplaySubject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+import { environment } from '@env/environment';
+import { ToastService } from '@app/services/toast.service';
 
 @Injectable()
 export class AuthService {
@@ -13,6 +15,8 @@ export class AuthService {
 
   public isAuthenticated$ = this.isAuthenticatedSubject$.asObservable();
   public isDoneLoading$ = this.isDoneLoadingSubject$.asObservable();
+
+  userProfile: any;
 
   /**
    * Publishes `true` if and only if (a) all the asynchronous initial
@@ -29,7 +33,7 @@ export class AuthService {
     this.isDoneLoading$,
   ]).pipe(map((values) => values.every((b) => b)));
 
-  constructor(private oauthService: OAuthService, private router: Router) {
+  constructor(private oauthService: OAuthService, private router: Router, private toastService: ToastService) {
     // Useful for debugging:
     this.oauthService.events.subscribe((event) => {
       if (event instanceof OAuthErrorEvent) {
@@ -203,8 +207,41 @@ export class AuthService {
     return this.oauthService.logoutUrl;
   }
 
+  public canActivate(routeRoles: any): Observable<boolean> {
+    return this.canActivateProtectedRoutes$.pipe(
+      map((canActivateProtectedRoutes: boolean) => {
+        if (canActivateProtectedRoutes) {
+          this.userProfile = this.identityClaims;
+          // console.warn(this.userProfile.resource_access.registration-client.roles);
+          if (!!this.userProfile.resource_access[environment.Oidc_ClientId].roles) {
+            const userRoles = this.userProfile.resource_access[environment.Oidc_ClientId].roles;
+
+            if (userRoles.includes(routeRoles)) {
+              // user's roles contains route's role
+              return true;
+            } else {
+              // toaster-display role user needs to have to access this route;
+              this.showToaster('Access denied', 'You do not have role ' + routeRoles);
+            }
+          }
+        }
+        return false;
+      })
+    );
+  }
+
   private navigateToLoginPage() {
     // TODO: Remember current URL
     this.router.navigateByUrl('/should-login');
+  }
+
+  // ngbmodal service
+  private showToaster(title: string, message: string) {
+    this.toastService.show(message, {
+      classname: 'bg-danger text-light',
+      delay: 2000,
+      autohide: true,
+      headertext: title,
+    });
   }
 }

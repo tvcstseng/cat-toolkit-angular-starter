@@ -19,7 +19,7 @@
           <span translate>Home</span>
         </a>
 
-        <a class="nav-item nav-link" routerLink="/promoter" routerLinkActive="active">
+        <a class="nav-item nav-link" routerLink="/promoter" routerLinkActive="active" *ngIf="hasRolePromoter$ | async">
           <i class="fas fa-users-cog"></i>
           <span translate>Promoter</span>
         </a>

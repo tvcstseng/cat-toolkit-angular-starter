@@ -10,13 +10,18 @@ import { AuthService } from '@app/@core/auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
   menuHidden = true;
+
   isAuthenticated: Observable<boolean>;
+
+  hasRolePromoter$: Observable<boolean>;
 
   constructor(private authService: AuthService) {
     this.isAuthenticated = authService.isAuthenticated$;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.hasRolePromoter$ = this.authService.canActivate('Promoter');
+  }
 
   toggleMenu() {
     this.menuHidden = !this.menuHidden;
@@ -27,7 +32,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    //this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
+    // this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
     this.authService.logout();
   }
 

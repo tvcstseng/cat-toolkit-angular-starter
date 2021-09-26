@@ -1,43 +1,21 @@
 import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, Route } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
 import { ToastService } from '@app/services/toast.service';
-import { environment } from '@env/environment';
 
 @Injectable()
 export class RoleGuard implements CanActivate {
-  userProfile: any;
-
   constructor(private authService: AuthService, private toastService: ToastService) {}
+
+  // https://javascript.plainenglish.io/4-ways-to-check-whether-the-property-exists-in-a-javascript-object-20c2d96d8f6e
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.authService.canActivateProtectedRoutes$.pipe(
-      map((canActivateProtectedRoutes: boolean) => {
-        if (canActivateProtectedRoutes) {
-          // role check only if route contain data.role
-          // https://javascript.plainenglish.io/4-ways-to-check-whether-the-property-exists-in-a-javascript-object-20c2d96d8f6e
-          if (!!route.data.role) {
-            const routeRoles = route.data.role;
-
-            this.userProfile = this.authService.identityClaims;
-            // console.warn(this.userProfile.resource_access.registration-client.roles);
-            if (!!this.userProfile.resource_access[environment.Oidc_ClientId].roles) {
-              const userRoles = this.userProfile.resource_access[environment.Oidc_ClientId].roles;
-
-              if (userRoles.includes(routeRoles)) {
-                // user's roles contains route's role
-                return true;
-              } else {
-                // toaster-display role user needs to have to access this route;
-                this.showToaster('Access denied', 'You do not have role ' + routeRoles);
-              }
-            }
-          }
-        }
-        return false;
-      })
-    );
+    let result;
+    if (!!route.data.role) {
+      const routeRoles = route.data.role;
+      result = this.authService.canActivate(routeRoles);
+    }
+    return result;
   }
 
   // ngbmodal service
