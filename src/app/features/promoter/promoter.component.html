@@ -1,1 +1,21 @@
-<p>promoter works!</p>
+<div class="page-container">
+  <div class="sidebar">
+    <div class="list-items">
+      <a routerLink="create-event" routerLinkActive="selected" class="list-item">
+        <i class="material-icons">chevron_right</i>
+        <span translate>Create event</span>
+      </a>
+      <a routerLink="show-my-events" routerLinkActive="selected" class="list-item">
+        <i class="material-icons">chevron_right</i>
+        <span translate>Show my events</span>
+      </a>
+      <a class="list-item">
+        <i class="material-icons">chevron_right</i>
+        <span translate>Create event</span>
+      </a>
+    </div>
+  </div>
+  <div class="page-content-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
