@@ -17,6 +17,12 @@ import { FallbackComponent } from './fallback.component';
 import { ShouldLoginComponent } from './should-login.component';
 
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import interactionPlugin from '@fullcalendar/interaction';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+
+FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
 @NgModule({
   imports: [
@@ -32,6 +38,8 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     ShellModule,
     HomeModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
+    FullCalendarModule,
+    TypeaheadModule.forRoot(),
   ],
   declarations: [AppComponent, FallbackComponent, ShouldLoginComponent],
   providers: [],

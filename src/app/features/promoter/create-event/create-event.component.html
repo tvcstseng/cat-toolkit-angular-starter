@@ -1,1 +1,148 @@
-<h1>Create event</h1>
+<h1 class="col-lg-12">Create Event</h1>
+
+<form [formGroup]="createEventForm" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="col-lg-4">
+      <div class="form-row col-lg-12 p-1">
+        <div class="form-group">
+          <label for="name">Event name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Enter event name"
+            [ngClass]="
+              (createEventForm.get('name').touched || createEventForm.get('name').dirty) &&
+              createEventForm.get('name').hasError('required')
+                ? 'is-invalid'
+                : '' || createEventForm.get('name').hasError('minlength')
+                ? 'is-invalid'
+                : '' ||
+                  ((createEventForm.get('name').touched || createEventForm.get('name').dirty) &&
+                    !createEventForm.get('name').invalid)
+                ? 'is-valid'
+                : ''
+            "
+            formControlName="name"
+            required
+          />
+          <div class="invalid-feedback">
+            {{ createEventForm.get('name').hasError('required') ? 'Please provide a valid event name' : '' }}
+            {{ createEventForm.get('name').hasError('minlength') ? '3 characters required' : '' }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row col-lg-12 p-1">
+        <div class="form-group">
+          <label for="venue">Please select the venue:</label>
+          <!--                    <button type="button" (click)="modal.show()">+</button>-->
+
+          <input
+            [typeahead]="venueList"
+            class="form-control"
+            id="venue"
+            placeholder="Enter venue name"
+            [ngClass]="
+              (createEventForm.get('venue').touched || createEventForm.get('venue').dirty) &&
+              createEventForm.get('venue').hasError('required')
+                ? 'is-invalid'
+                : '' || createEventForm.get('venue').hasError('minlength')
+                ? 'is-invalid'
+                : '' ||
+                  ((createEventForm.get('venue').touched || createEventForm.get('venue').dirty) &&
+                    !createEventForm.get('venue').invalid)
+                ? 'is-valid'
+                : ''
+            "
+            formControlName="venue"
+            required
+          />
+          <div class="invalid-feedback">
+            {{ createEventForm.get('venue').hasError('required') ? 'Please provide a valid venue name' : '' }}
+            {{ createEventForm.get('venue').hasError('minlength') ? '3 characters required' : '' }}
+          </div>
+
+          <!--                    Please select the venue:-->
+          <!--                    <input [(ngModel)]="selected"-->
+          <!--                           [ngModelOptions]="{standalone: true}"-->
+          <!--                           [typeahead]="venueList"-->
+          <!--                           class="form-control">-->
+        </div>
+      </div>
+
+      <div class="form-row col-lg-12 p-1">
+        <div class="form-group">
+          <label for="dateStartControl">Event starts at:</label>
+          <input
+            type="datetime-local"
+            class="form-control"
+            id="dateStartControl"
+            [ngClass]="
+              (createEventForm.get('dateStartControl').touched || createEventForm.get('dateStartControl').dirty) &&
+              createEventForm.get('dateStartControl').hasError('required')
+                ? 'is-invalid'
+                : '' || createEventForm.get('dateStartControl').hasError('minlength')
+                ? 'is-invalid'
+                : '' ||
+                  ((createEventForm.get('dateStartControl').touched || createEventForm.get('dateStartControl').dirty) &&
+                    !createEventForm.get('dateStartControl').invalid)
+                ? 'is-valid'
+                : ''
+            "
+            formControlName="dateStartControl"
+            required
+          />
+          <div class="invalid-feedback">
+            {{
+              createEventForm.get('dateStartControl').hasError('required') ? 'Please provide a valid venue name' : ''
+            }}
+            {{ createEventForm.get('dateStartControl').hasError('minlength') ? '3 characters required' : '' }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row col-lg-12 p-1">
+        <div class="form-group">
+          <label for="dateEndControl">Event ends at:</label>
+          <input
+            type="datetime-local"
+            class="form-control"
+            id="dateEndControl"
+            [ngClass]="
+              (createEventForm.get('dateEndControl').touched || createEventForm.get('dateEndControl').dirty) &&
+              createEventForm.get('dateEndControl').hasError('required')
+                ? 'is-invalid'
+                : '' || createEventForm.get('dateEndControl').hasError('minlength')
+                ? 'is-invalid'
+                : '' ||
+                  ((createEventForm.get('dateEndControl').touched || createEventForm.get('dateEndControl').dirty) &&
+                    !createEventForm.get('dateEndControl').invalid)
+                ? 'is-valid'
+                : ''
+            "
+            formControlName="dateEndControl"
+            required
+          />
+          <div class="invalid-feedback">
+            {{ createEventForm.get('dateEndControl').hasError('required') ? 'Please provide a valid venue name' : '' }}
+            {{ createEventForm.get('dateEndControl').hasError('minlength') ? '3 characters required' : '' }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row col-lg-12 p-1">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+          <label class="form-check-label" for="flexCheckDefault"> Minimum age required </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <full-calendar class="col-lg-12" [options]="calendarOptions"></full-calendar>
+    </div>
+  </div>
+  <div class="form-row col-lg-12 p-1 mt-4">
+    <button class="btn btn-primary" type="submit" [disabled]="!createEventForm.valid">Create event</button>
+  </div>
+</form>

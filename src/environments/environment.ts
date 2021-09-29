@@ -18,8 +18,9 @@ export const environment = {
   supportedLanguages: ['en-US'],
   // REST API server
   // Api_Endpoint: 'https://localhost:44378/api/v1',
-  Api_Endpoint: 'https://cat-netcore-api.azurewebsites.net/api/v1',
-  Api_Mock_Endpoint: 'https://angular-datatables-demo-server.herokuapp.com',
+  // Api_Endpoint: 'https://cat-netcore-api.azurewebsites.net/api/v1',
+  Api_Endpoint: 'http://localhost:9081',
+  Api_Mock_Endpoint: 'http://angular-datatables-demo-server.herokuapp.com',
 
   // IdentityServer/OIDC Configuration
   // Oidc_Issuer: 'https://localhost:44310', //this is for IdentityServer4 Admin UI running on localhost https://github.com/workcontrolgit/TokenProject.AdminUI

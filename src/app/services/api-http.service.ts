@@ -1,6 +1,6 @@
 // Angular Modules
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 // RxJs
 import { Observable } from 'rxjs';
 

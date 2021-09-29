@@ -60,7 +60,8 @@ export class ApiEndpointsService {
   public postPersonsEndpoint = (): string => this.createUrl('', true);
 
   // call regular endpoint without boolean true at end
-  // https://localhost:44378/api/v1 (ASP.NET CORE REST API.  Repo https://github.com/workcontrolgit/AngularNgxDataTableBackend)
+  // https://localhost:44378/api/v1 (ASP.NET CORE REST API.
+  // Repo https://github.com/workcontrolgit/AngularNgxDataTableBackend)
   public postPositionsPagedEndpoint = (): string => this.createUrl('Positions/Paged');
 
   public postPositionsEndpoint = (): string => this.createUrl('Positions');
@@ -94,7 +95,7 @@ export class ApiEndpointsService {
 
   // URL WITH PATH VARIABLES
   private createUrlWithPathVariables(action: string, pathVariables: any[] = []): string {
-    let encodedPathVariablesUrl: string = '';
+    let encodedPathVariablesUrl = '';
     // Push extra path variables
     for (const pathVariable of pathVariables) {
       if (pathVariable !== null) {

@@ -24,7 +24,7 @@ export class DetailComponent implements OnInit {
   entryForm: FormGroup;
   error: string | undefined;
   position: Position;
-  isAddNew: boolean = false;
+  isAddNew = false;
 
   constructor(
     public toastService: ToastService,
@@ -81,11 +81,11 @@ export class DetailComponent implements OnInit {
   // CRUD > Read, map to REST/HTTP GET
   read(id: any): void {
     this.apiHttpService.get(this.apiEndpointsService.getPositionByIdEndpoint(id), id).subscribe(
-      //Assign resp to class-level model object.
+      // Assign resp to class-level model object.
       (resp: DataResponsePosition) => {
-        //Assign data to class-level model object.
+        // Assign data to class-level model object.
         this.position = resp.data;
-        //Populate reactive form controls with model object properties.
+        // Populate reactive form controls with model object properties.
         this.entryForm.setValue({
           id: this.position.id,
           positionNumber: this.position.positionNumber,
