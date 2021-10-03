@@ -80,7 +80,7 @@ export class DetailComponent implements OnInit {
   }
   // CRUD > Read, map to REST/HTTP GET
   read(id: any): void {
-    this.apiHttpService.get(this.apiEndpointsService.getPositionByIdEndpoint(id), id).subscribe(
+    this.apiHttpService.getWithOptions(this.apiEndpointsService.getPositionByIdEndpoint(id), id).subscribe(
       // Assign resp to class-level model object.
       (resp: DataResponsePosition) => {
         // Assign data to class-level model object.

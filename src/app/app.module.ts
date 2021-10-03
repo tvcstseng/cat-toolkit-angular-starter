@@ -21,6 +21,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
@@ -39,6 +40,7 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     HomeModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
     FullCalendarModule,
+    BrowserAnimationsModule,
     TypeaheadModule.forRoot(),
   ],
   declarations: [AppComponent, FallbackComponent, ShouldLoginComponent],

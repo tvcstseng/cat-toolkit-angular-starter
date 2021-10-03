@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { ApiHttpService } from '@app/services/api-http.service';
 import { EventDto } from '@app/features/dto/event-dto';
 import { VenueDto } from '@app/features/dto/venue-dto';
-import { HttpHeaders } from '@angular/common/http';
 import { AuthService } from '@core/auth/auth.service';
 
 @Component({
@@ -17,8 +16,10 @@ export class CreateEventComponent implements OnInit {
   createEventForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     venue: ['', [Validators.required, Validators.minLength(3)]],
-    dateStartControl: ['', [Validators.required]], // TODO: valid date validator
-    dateEndControl: ['', [Validators.required]], // TODO: valid date validator
+    start: ['', [Validators.required]], // TODO: valid date validator
+    end: ['', [Validators.required]], // TODO: valid date validator
+    voucherQty: ['', [Validators.required, Validators.minLength(1)]],
+    voucherQtyPerCustomer: ['', [Validators.required, Validators.minLength(1)]],
     minAgeControl: new FormControl(''),
   });
 
@@ -26,31 +27,42 @@ export class CreateEventComponent implements OnInit {
     initialView: 'dayGridMonth',
   };
 
-  eventDto: EventDto = new EventDto('', 'eventName', 'venueName');
+  focussedEventDto: EventDto = new EventDto('', 'eventName', 'venueName', '', '', '', '', 0, 0, false);
 
   venueObservable: VenueDto[];
+  // events gotten from backend
+  Events: EventDto[];
 
-  venueList: string[] = [];
+  venueListByName: string[] = [];
 
-  private url = 'http://localhost:9081/resource-server/api/event/';
+  private eventUrl = 'http://localhost:9081/resource-server/api/event/';
   private venueUrl = 'http://localhost:9081/resource-server/api/venue/';
 
   constructor(private fb: FormBuilder, private authService: AuthService, private apiHttpService: ApiHttpService) {}
 
+  onDateClick(res: any) {
+    alert('Clicked on date : ' + res.dateStr);
+  }
+
   ngOnInit() {
     this.getVenues().subscribe((res) => {
       this.venueObservable = res;
-      this.venueList = res.map((x) => x.name);
+      this.venueListByName = res.map((x) => x.name);
     });
+
+    this.updateEvents();
   }
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
     // console.warn(this.createEventForm.value);
-    this.eventDto = this.createEventForm.value;
-    this.apiHttpService.post(this.url, this.eventDto).subscribe(
+    this.focussedEventDto = this.createEventForm.value;
+    this.focussedEventDto.timeZoneStart = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    this.focussedEventDto.timeZoneEnd = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    this.apiHttpService.post(this.eventUrl, this.focussedEventDto).subscribe(
       (result) => {
-        console.log('upload event: ' + result);
+        console.log('uploaded event');
+        this.updateEvents();
       },
       (error) => {
         console.log(error);
@@ -58,16 +70,34 @@ export class CreateEventComponent implements OnInit {
     );
   }
 
-  // Venue search
-  getVenues(): Observable<VenueDto[]> {
-    const headers = new HttpHeaders({
-      'Content-type': 'application/json; charset=utf-8',
-      Authorization: 'Bearer ' + this.authService.accessToken,
+  private updateEvents() {
+    // update the events
+    this.getEvents().subscribe((res) => {
+      this.Events = res;
+      console.log(this.Events);
+      this.setCalendarOptions();
     });
-    return this.apiHttpService.get(this.venueUrl, headers);
   }
 
-  handleChange() {
-    this.getVenues();
+  private setCalendarOptions() {
+    this.calendarOptions = {
+      initialView: 'dayGridMonth',
+      dateClick: this.onDateClick.bind(this),
+      events: this.Events,
+    };
+  }
+
+  /*
+   * Api calls
+   */
+
+  // Venue search
+  private getVenues(): Observable<VenueDto[]> {
+    return this.apiHttpService.get(this.venueUrl);
+  }
+
+  // Event search
+  private getEvents(): Observable<EventDto[]> {
+    return this.apiHttpService.get(this.eventUrl);
   }
 }

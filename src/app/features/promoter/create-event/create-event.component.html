@@ -39,7 +39,7 @@
           <!--                    <button type="button" (click)="modal.show()">+</button>-->
 
           <input
-            [typeahead]="venueList"
+            [typeahead]="venueListByName"
             class="form-control"
             id="venue"
             placeholder="Enter venue name"
@@ -73,60 +73,128 @@
 
       <div class="form-row col-lg-12 p-1">
         <div class="form-group">
-          <label for="dateStartControl">Event starts at:</label>
+          <label for="start">Event starts at:</label>
           <input
             type="datetime-local"
             class="form-control"
-            id="dateStartControl"
+            id="start"
             [ngClass]="
-              (createEventForm.get('dateStartControl').touched || createEventForm.get('dateStartControl').dirty) &&
-              createEventForm.get('dateStartControl').hasError('required')
+              (createEventForm.get('start').touched || createEventForm.get('start').dirty) &&
+              createEventForm.get('start').hasError('required')
                 ? 'is-invalid'
-                : '' || createEventForm.get('dateStartControl').hasError('minlength')
+                : '' || createEventForm.get('start').hasError('minlength')
                 ? 'is-invalid'
                 : '' ||
-                  ((createEventForm.get('dateStartControl').touched || createEventForm.get('dateStartControl').dirty) &&
-                    !createEventForm.get('dateStartControl').invalid)
+                  ((createEventForm.get('start').touched || createEventForm.get('start').dirty) &&
+                    !createEventForm.get('start').invalid)
                 ? 'is-valid'
                 : ''
             "
-            formControlName="dateStartControl"
+            formControlName="start"
             required
           />
           <div class="invalid-feedback">
-            {{
-              createEventForm.get('dateStartControl').hasError('required') ? 'Please provide a valid venue name' : ''
-            }}
-            {{ createEventForm.get('dateStartControl').hasError('minlength') ? '3 characters required' : '' }}
+            {{ createEventForm.get('start').hasError('required') ? 'Please provide a valid venue name' : '' }}
+            {{ createEventForm.get('start').hasError('minlength') ? '3 characters required' : '' }}
           </div>
         </div>
       </div>
 
       <div class="form-row col-lg-12 p-1">
         <div class="form-group">
-          <label for="dateEndControl">Event ends at:</label>
+          <label for="end">Event ends at:</label>
           <input
             type="datetime-local"
             class="form-control"
-            id="dateEndControl"
+            id="end"
             [ngClass]="
-              (createEventForm.get('dateEndControl').touched || createEventForm.get('dateEndControl').dirty) &&
-              createEventForm.get('dateEndControl').hasError('required')
+              (createEventForm.get('end').touched || createEventForm.get('end').dirty) &&
+              createEventForm.get('end').hasError('required')
                 ? 'is-invalid'
-                : '' || createEventForm.get('dateEndControl').hasError('minlength')
+                : '' || createEventForm.get('end').hasError('minlength')
                 ? 'is-invalid'
                 : '' ||
-                  ((createEventForm.get('dateEndControl').touched || createEventForm.get('dateEndControl').dirty) &&
-                    !createEventForm.get('dateEndControl').invalid)
+                  ((createEventForm.get('end').touched || createEventForm.get('end').dirty) &&
+                    !createEventForm.get('end').invalid)
                 ? 'is-valid'
                 : ''
             "
-            formControlName="dateEndControl"
+            formControlName="end"
             required
           />
           <div class="invalid-feedback">
-            {{ createEventForm.get('dateEndControl').hasError('required') ? 'Please provide a valid venue name' : '' }}
-            {{ createEventForm.get('dateEndControl').hasError('minlength') ? '3 characters required' : '' }}
+            {{ createEventForm.get('end').hasError('required') ? 'Please provide a valid venue name' : '' }}
+            {{ createEventForm.get('end').hasError('minlength') ? '3 characters required' : '' }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row col-lg-12 p-1">
+        <div class="form-group">
+          <label for="voucherQty"><span translate>Quantity available vouchers:</span></label>
+          <input
+            type="text"
+            class="form-control"
+            id="voucherQty"
+            placeholder="Enter voucher quantity"
+            [ngClass]="
+              (createEventForm.get('voucherQty').touched || createEventForm.get('voucherQty').dirty) &&
+              createEventForm.get('voucherQty').hasError('required')
+                ? 'is-invalid'
+                : '' || createEventForm.get('voucherQty').hasError('minlength')
+                ? 'is-invalid'
+                : '' ||
+                  ((createEventForm.get('voucherQty').touched || createEventForm.get('voucherQty').dirty) &&
+                    !createEventForm.get('voucherQty').invalid)
+                ? 'is-valid'
+                : ''
+            "
+            formControlName="voucherQty"
+            required
+          />
+          <div class="invalid-feedback">
+            {{
+              createEventForm.get('voucherQty').hasError('required')
+                ? 'Please provide a valid quantity of vouchers'
+                : ''
+            }}
+            {{ createEventForm.get('voucherQty').hasError('minlength') ? '3 characters required' : '' }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row col-lg-12 p-1">
+        <div class="form-group">
+          <label for="voucherQtyPerCustomer"><span translate>Quantity available vouchers per customer:</span></label>
+          <input
+            type="text"
+            class="form-control"
+            id="voucherQtyPerCustomer"
+            placeholder="Enter voucher quantity"
+            [ngClass]="
+              (createEventForm.get('voucherQtyPerCustomer').touched ||
+                createEventForm.get('voucherQtyPerCustomer').dirty) &&
+              createEventForm.get('voucherQtyPerCustomer').hasError('required')
+                ? 'is-invalid'
+                : '' || createEventForm.get('voucherQtyPerCustomer').hasError('minlength')
+                ? 'is-invalid'
+                : '' ||
+                  ((createEventForm.get('voucherQtyPerCustomer').touched ||
+                    createEventForm.get('voucherQtyPerCustomer').dirty) &&
+                    !createEventForm.get('voucherQtyPerCustomer').invalid)
+                ? 'is-valid'
+                : ''
+            "
+            formControlName="voucherQtyPerCustomer"
+            required
+          />
+          <div class="invalid-feedback">
+            {{
+              createEventForm.get('voucherQtyPerCustomer').hasError('required')
+                ? 'Please provide a valid quantity of vouchers a customer can buy'
+                : ''
+            }}
+            {{ createEventForm.get('voucherQtyPerCustomer').hasError('minlength') ? '3 characters required' : '' }}
           </div>
         </div>
       </div>
