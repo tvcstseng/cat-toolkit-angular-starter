@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { ApiHttpService } from '@app/services/api-http.service';
 import { EventDto } from '@app/features/dto/event-dto';
 import { VenueDto } from '@app/features/dto/venue-dto';
-import { ApiEndpointsService } from '@app/services/api-endpoints.service';
 import { HttpHeaders } from '@angular/common/http';
 import { AuthService } from '@core/auth/auth.service';
 
@@ -36,12 +35,7 @@ export class CreateEventComponent implements OnInit {
   private url = 'http://localhost:9081/resource-server/api/event/';
   private venueUrl = 'http://localhost:9081/resource-server/api/venue/';
 
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private apiHttpService: ApiHttpService,
-    private apiEndpointsService: ApiEndpointsService
-  ) {}
+  constructor(private fb: FormBuilder, private authService: AuthService, private apiHttpService: ApiHttpService) {}
 
   ngOnInit() {
     this.getVenues().subscribe((res) => {
