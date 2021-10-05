@@ -21,9 +21,12 @@ export const environment = {
   // Api_Endpoint: 'https://cat-netcore-api.azurewebsites.net/api/v1',
   Api_Endpoint: 'http://localhost:9081',
   Api_Mock_Endpoint: 'http://angular-datatables-demo-server.herokuapp.com',
+  Api_event_url: 'http://localhost:9081/resource-server/api/event/',
+  Api_venue_url: 'http://localhost:9081/resource-server/api/venue/',
 
   // IdentityServer/OIDC Configuration
-  // Oidc_Issuer: 'https://localhost:44310', //this is for IdentityServer4 Admin UI running on localhost https://github.com/workcontrolgit/TokenProject.AdminUI
+  // Oidc_Issuer: 'https://localhost:44310',
+  // this is for IdentityServer4 Admin UI running on localhost https://github.com/workcontrolgit/TokenProject.AdminUI
   Oidc_Issuer: 'http://localhost:8080/auth/realms/VoucherKeycloak', // demo identityserver4 in Azure
   Oidc_ClientId: 'registration-client', // client id setup in IdentityServer4
   Oidc_responseType: 'code', // code flow PKCE, https://github.com/workcontrolgit/TokenProject.AdminUI

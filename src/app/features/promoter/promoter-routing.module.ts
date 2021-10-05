@@ -4,15 +4,16 @@ import { AuthGuard } from '@app/@core/auth/auth-guard.service';
 import { RoleGuard } from '@app/@core/auth/role-guard.service';
 import { PromoterComponent } from '@app/features/promoter/promoter.component';
 import { CreateEventComponent } from '@app/features/promoter/create-event/create-event.component';
-import { ShowMyEventsComponent } from '@app/features/promoter/show-my-events/show-my-events.component';
+import { MyEventOverviewComponent } from '@app/features/promoter/my-event-overview/my-event-overview.component';
 
 const routes: Routes = [
   {
     path: '',
     component: PromoterComponent,
     children: [
+      { path: '', redirectTo: 'my-event-overview', pathMatch: 'full' },
       { path: 'create-event', component: CreateEventComponent },
-      { path: 'show-my-events', component: ShowMyEventsComponent },
+      { path: 'my-event-overview', component: MyEventOverviewComponent },
     ],
     canActivate: [AuthGuard, RoleGuard],
     data: {

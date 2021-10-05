@@ -6,6 +6,7 @@ import { ApiHttpService } from '@app/services/api-http.service';
 import { EventDto } from '@app/features/dto/event-dto';
 import { VenueDto } from '@app/features/dto/venue-dto';
 import { AuthService } from '@core/auth/auth.service';
+import { Constants } from '@app/config/constants';
 
 @Component({
   selector: 'app-create-event',
@@ -35,10 +36,12 @@ export class CreateEventComponent implements OnInit {
 
   venueListByName: string[] = [];
 
-  private eventUrl = 'http://localhost:9081/resource-server/api/event/';
-  private venueUrl = 'http://localhost:9081/resource-server/api/venue/';
-
-  constructor(private fb: FormBuilder, private authService: AuthService, private apiHttpService: ApiHttpService) {}
+  constructor(
+    private constants: Constants,
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private apiHttpService: ApiHttpService
+  ) {}
 
   onDateClick(res: any) {
     alert('Clicked on date : ' + res.dateStr);
@@ -59,7 +62,7 @@ export class CreateEventComponent implements OnInit {
     this.focussedEventDto = this.createEventForm.value;
     this.focussedEventDto.timeZoneStart = Intl.DateTimeFormat().resolvedOptions().timeZone;
     this.focussedEventDto.timeZoneEnd = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    this.apiHttpService.post(this.eventUrl, this.focussedEventDto).subscribe(
+    this.apiHttpService.post(this.constants.api_url_event, this.focussedEventDto).subscribe(
       (result) => {
         console.log('uploaded event');
         this.updateEvents();
@@ -93,11 +96,11 @@ export class CreateEventComponent implements OnInit {
 
   // Venue search
   private getVenues(): Observable<VenueDto[]> {
-    return this.apiHttpService.get(this.venueUrl);
+    return this.apiHttpService.get(this.constants.api_url_venue);
   }
 
   // Event search
   private getEvents(): Observable<EventDto[]> {
-    return this.apiHttpService.get(this.eventUrl);
+    return this.apiHttpService.get(this.constants.api_url_event);
   }
 }
