@@ -1,7 +1,13 @@
 <h1>My events</h1>
 
 <div class="list-items">
-  <div class="row" *ngFor="let event of Events">
+  <div
+    class="row"
+    *ngFor="let event of Events"
+    (click)="setFocussedEvent(event)"
+    routerLink="{{ event.uuid }}/edit-event"
+    routerLinkActive="selected"
+  >
     <div class="col-lg-2">
       <img
         class="img-fluid"

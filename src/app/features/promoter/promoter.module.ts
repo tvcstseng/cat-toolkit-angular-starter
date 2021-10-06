@@ -7,9 +7,10 @@ import { MyEventOverviewComponent } from './my-event-overview/my-event-overview.
 import { ReactiveFormsModule } from '@angular/forms';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { EditEventComponent } from './edit-event/edit-event.component';
 
 @NgModule({
-  declarations: [PromoterComponent, CreateEventComponent, MyEventOverviewComponent],
+  declarations: [PromoterComponent, CreateEventComponent, MyEventOverviewComponent, EditEventComponent],
   imports: [CommonModule, PromoterRoutingModule, ReactiveFormsModule, FullCalendarModule, TypeaheadModule],
 })
 export class PromoterModule {}

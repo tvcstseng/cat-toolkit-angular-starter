@@ -1,11 +1,11 @@
 <div class="page-container">
   <div class="sidebar">
     <div class="list-items">
-      <a routerLink="my-event-overview" routerLinkActive="selected" class="list-item">
+      <a routerLink="{{ focussedPromoterDto.uuid }}/my-event-overview}" routerLinkActive="selected" class="list-item">
         <i class="material-icons">chevron_right</i>
         <span translate>My event overview</span>
       </a>
-      <a routerLink="create-event" routerLinkActive="selected" class="list-item">
+      <a routerLink="../{{ focussedPromoterDto.uuid }}/create-event" routerLinkActive="selected" class="list-item">
         <i class="material-icons">chevron_right</i>
         <span translate>Create event</span>
       </a>
