@@ -18,15 +18,15 @@ export class MyEventOverviewComponent implements OnInit {
   constructor(private constants: Constants, private apiHttpService: ApiHttpService) {}
 
   ngOnInit(): void {
-    this.updateEvents();
+    this.refreshEvents();
   }
 
   public setFocussedEvent(eventDto: EventDto) {
     this.focussedEventDto = eventDto;
-    PromoterConstants.EVENT_ID_PARAM = eventDto.uuid;
+    PromoterConstants.EVENT_ID_PARAM_VALUE = eventDto.uuid;
   }
 
-  private updateEvents() {
+  private refreshEvents() {
     // update the events
     this.getEvents().subscribe((res) => {
       this.Events = res;

@@ -1,8 +1,0 @@
-// Angular Modules
-import { Injectable } from '@angular/core';
-
-@Injectable()
-export class PromoterConstants {
-  public readonly PROMOTER_ID_PARAM: string;
-  public readonly EVENT_ID_PARAM: string;
-}

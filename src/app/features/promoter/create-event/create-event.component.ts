@@ -36,12 +36,7 @@ export class CreateEventComponent implements OnInit {
 
   venueListByName: string[] = [];
 
-  constructor(
-    private constants: Constants,
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private apiHttpService: ApiHttpService
-  ) {}
+  constructor(private constants: Constants, private fb: FormBuilder, private apiHttpService: ApiHttpService) {}
 
   onDateClick(res: any) {
     alert('Clicked on date : ' + res.dateStr);

@@ -7,18 +7,26 @@ export class PromoterConstants {
   static focussedEventId: string;
 
   public static get PROMOTER_ID_PARAM(): string {
-    return '1';
+    return 'promoterUuid';
   }
 
-  public static set PROMOTER_ID_PARAM(promoterId: string) {
+  public static get PROMOTER_ID_PARAM_VALUE(): string {
+    return this.focussedPromoterId;
+  }
+
+  public static set PROMOTER_ID_PARAM_VALUE(promoterId: string) {
     this.focussedPromoterId = promoterId;
   }
 
   public static get EVENT_ID_PARAM(): string {
+    return 'eventUuid';
+  }
+
+  public static get EVENT_ID_PARAM_VALUE(): string {
     return this.focussedEventId;
   }
 
-  public static set EVENT_ID_PARAM(eventId: string) {
+  public static set EVENT_ID_PARAM_VALUE(eventId: string) {
     this.focussedEventId = eventId;
   }
 }
