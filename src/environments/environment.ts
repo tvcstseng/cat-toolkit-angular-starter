@@ -22,8 +22,8 @@ export const environment = {
   Api_Endpoint: 'http://localhost:9081',
   Api_Mock_Endpoint: 'http://angular-datatables-demo-server.herokuapp.com',
   Api_event_url: 'http://localhost:9081/resource-server/api/event',
-  Api_venue_url: 'http://localhost:9081/resource-server/api/venue/',
-  Api_onboard_user: 'http://localhost:9081/resource-server/api/onboard-user/',
+  Api_venue_url: 'http://localhost:9081/resource-server/api/venue',
+  Api_onboard_user: 'http://localhost:9081/resource-server/api/onboard-customer',
 
   // IdentityServer/OIDC Configuration
   // Oidc_Issuer: 'https://localhost:44310',

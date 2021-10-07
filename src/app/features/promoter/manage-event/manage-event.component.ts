@@ -15,22 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ManageEventComponent implements OnInit {
   eventUuid: string;
-  focussedEventDto: EventDto = new EventDto('', 'eventName', 'venueName', '', '', '', '', 0, 0, false);
-
-  customer: CustomerDto;
-
-  onboardCustomerForm = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(2)]],
-    surname: ['', [Validators.required, Validators.minLength(2)]],
-    email: ['', [Validators.required, Validators.email]], // TODO: valid date validator
-    phoneNumber: ['', [Validators.required, Validators.minLength(7)]], // TODO: valid date validator
-    address: ['', [Validators.required, Validators.minLength(3)]],
-    addressNr: ['', [Validators.required, Validators.minLength(1)]],
-    city: ['', [Validators.required, Validators.minLength(3)]],
-    state: ['', [Validators.required, Validators.minLength(3)]],
-    country: ['', [Validators.required, Validators.minLength(3)]],
-    postalCode: ['', [Validators.required, Validators.minLength(3)]],
-  });
+  focussedEventDto: EventDto = new EventDto('', '', '', '', '', '', '', 0, 0, false);
 
   private routeSub: Subscription;
 
@@ -49,22 +34,6 @@ export class ManageEventComponent implements OnInit {
     });
 
     this.refreshFocussedEvent();
-  }
-
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    this.customer = this.onboardCustomerForm.value;
-    this.apiHttpService.post(this.constants.api_url_onboard_user, this.customer).subscribe(
-      (result) => {
-        console.log('upload user to onboard: ' + result);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-    // touch the resource to update screens
-    // this._service.getResource(this.url);
-    // console.warn(this.createVenueForm.value);
   }
 
   private refreshFocussedEvent() {
