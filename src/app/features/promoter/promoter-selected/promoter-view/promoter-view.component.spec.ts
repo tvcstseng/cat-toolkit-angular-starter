@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateEventComponent } from './create-event.component';
+import { PromoterViewComponent } from './promoter-view.component';
 
-describe('CreateEventComponent', () => {
-  let component: CreateEventComponent;
-  let fixture: ComponentFixture<CreateEventComponent>;
+describe('PromoterViewComponent', () => {
+  let component: PromoterViewComponent;
+  let fixture: ComponentFixture<PromoterViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CreateEventComponent],
+      declarations: [PromoterViewComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateEventComponent);
+    fixture = TestBed.createComponent(PromoterViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

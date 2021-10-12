@@ -5,16 +5,15 @@ import { Observable } from 'rxjs';
 import { ApiHttpService } from '@app/services/api-http.service';
 import { EventDto } from '@app/features/dto/event-dto';
 import { VenueDto } from '@app/features/dto/venue-dto';
-import { AuthService } from '@core/auth/auth.service';
 import { Constants } from '@app/config/constants';
 
 @Component({
   selector: 'app-create-event',
-  templateUrl: './create-event.component.html',
-  styleUrls: ['./create-event.component.scss'],
+  templateUrl: './event-form.component.html',
+  styleUrls: ['./event-form.component.scss'],
 })
-export class CreateEventComponent implements OnInit {
-  createEventForm = this.fb.group({
+export class EventFormComponent implements OnInit {
+  eventForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     venue: ['', [Validators.required, Validators.minLength(3)]],
     start: ['', [Validators.required]], // TODO: valid date validator
@@ -54,7 +53,7 @@ export class CreateEventComponent implements OnInit {
   onSubmit() {
     // TODO: Use EventEmitter with form value
     // console.warn(this.createEventForm.value);
-    this.focussedEventDto = this.createEventForm.value;
+    this.focussedEventDto = this.eventForm.value;
     this.focussedEventDto.timeZoneStart = Intl.DateTimeFormat().resolvedOptions().timeZone;
     this.focussedEventDto.timeZoneEnd = Intl.DateTimeFormat().resolvedOptions().timeZone;
     this.apiHttpService.post(this.constants.api_url_event, this.focussedEventDto).subscribe(

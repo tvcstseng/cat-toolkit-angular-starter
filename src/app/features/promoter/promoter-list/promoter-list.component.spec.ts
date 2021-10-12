@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MyEventOverviewComponent } from './my-event-overview.component';
+import { PromoterListComponent } from './promoter-list.component';
 
-describe('MyEventOverviewComponent', () => {
-  let component: MyEventOverviewComponent;
-  let fixture: ComponentFixture<MyEventOverviewComponent>;
+describe('PromoterListComponent', () => {
+  let component: PromoterListComponent;
+  let fixture: ComponentFixture<PromoterListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MyEventOverviewComponent],
+      declarations: [PromoterListComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MyEventOverviewComponent);
+    fixture = TestBed.createComponent(PromoterListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

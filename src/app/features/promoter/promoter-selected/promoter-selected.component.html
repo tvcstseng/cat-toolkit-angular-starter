@@ -1,0 +1,18 @@
+<p>promoter-selected works!</p>
+<div class="page-container">
+  <div class="sidebar">
+    <div class="list-items">
+      <a routerLink="{{ focussedPromoterDto.uuid }}/my-event-overview}" routerLinkActive="selected" class="list-item">
+        <i class="material-icons">chevron_right</i>
+        <span translate>My event overview</span>
+      </a>
+      <a routerLink="../{{ focussedPromoterDto.uuid }}/create-event" routerLinkActive="selected" class="list-item">
+        <i class="material-icons">chevron_right</i>
+        <span translate>Create event</span>
+      </a>
+    </div>
+  </div>
+  <div class="page-content-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

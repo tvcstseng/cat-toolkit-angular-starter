@@ -7,10 +7,10 @@ import { PromoterConstants } from '@app/features/promoter/promoter-constants';
 
 @Component({
   selector: 'app-my-event-overview',
-  templateUrl: './my-event-overview.component.html',
-  styleUrls: ['./my-event-overview.component.scss'],
+  templateUrl: './event-list.component.html',
+  styleUrls: ['./event-list.component.scss'],
 })
-export class MyEventOverviewComponent implements OnInit {
+export class EventListComponent implements OnInit {
   Events: EventDto[];
 
   focussedEventDto: EventDto = new EventDto('', 'eventName', 'venueName', '', '', '', '', 0, 0, false);

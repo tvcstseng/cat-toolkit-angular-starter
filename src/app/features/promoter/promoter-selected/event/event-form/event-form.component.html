@@ -1,6 +1,6 @@
 <h1 class="col-lg-12">Create Event</h1>
 
-<form [formGroup]="createEventForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
   <div class="form-row">
     <div class="col-lg-5">
       <div class="form-row col-lg-12 p-1">
@@ -12,14 +12,13 @@
             id="name"
             placeholder="Enter event name"
             [ngClass]="
-              (createEventForm.get('name').touched || createEventForm.get('name').dirty) &&
-              createEventForm.get('name').hasError('required')
+              (eventForm.get('name').touched || eventForm.get('name').dirty) &&
+              eventForm.get('name').hasError('required')
                 ? 'is-invalid'
-                : '' || createEventForm.get('name').hasError('minlength')
+                : '' || eventForm.get('name').hasError('minlength')
                 ? 'is-invalid'
                 : '' ||
-                  ((createEventForm.get('name').touched || createEventForm.get('name').dirty) &&
-                    !createEventForm.get('name').invalid)
+                  ((eventForm.get('name').touched || eventForm.get('name').dirty) && !eventForm.get('name').invalid)
                 ? 'is-valid'
                 : ''
             "
@@ -27,8 +26,8 @@
             required
           />
           <div class="invalid-feedback">
-            {{ createEventForm.get('name').hasError('required') ? 'Please provide a valid event name' : '' }}
-            {{ createEventForm.get('name').hasError('minlength') ? '3 characters required' : '' }}
+            {{ eventForm.get('name').hasError('required') ? 'Please provide a valid event name' : '' }}
+            {{ eventForm.get('name').hasError('minlength') ? '3 characters required' : '' }}
           </div>
         </div>
       </div>
@@ -44,14 +43,13 @@
             id="venue"
             placeholder="Enter venue name"
             [ngClass]="
-              (createEventForm.get('venue').touched || createEventForm.get('venue').dirty) &&
-              createEventForm.get('venue').hasError('required')
+              (eventForm.get('venue').touched || eventForm.get('venue').dirty) &&
+              eventForm.get('venue').hasError('required')
                 ? 'is-invalid'
-                : '' || createEventForm.get('venue').hasError('minlength')
+                : '' || eventForm.get('venue').hasError('minlength')
                 ? 'is-invalid'
                 : '' ||
-                  ((createEventForm.get('venue').touched || createEventForm.get('venue').dirty) &&
-                    !createEventForm.get('venue').invalid)
+                  ((eventForm.get('venue').touched || eventForm.get('venue').dirty) && !eventForm.get('venue').invalid)
                 ? 'is-valid'
                 : ''
             "
@@ -59,8 +57,8 @@
             required
           />
           <div class="invalid-feedback">
-            {{ createEventForm.get('venue').hasError('required') ? 'Please provide a valid venue name' : '' }}
-            {{ createEventForm.get('venue').hasError('minlength') ? '3 characters required' : '' }}
+            {{ eventForm.get('venue').hasError('required') ? 'Please provide a valid venue name' : '' }}
+            {{ eventForm.get('venue').hasError('minlength') ? '3 characters required' : '' }}
           </div>
 
           <!--                    Please select the venue:-->
@@ -79,14 +77,13 @@
             class="form-control"
             id="start"
             [ngClass]="
-              (createEventForm.get('start').touched || createEventForm.get('start').dirty) &&
-              createEventForm.get('start').hasError('required')
+              (eventForm.get('start').touched || eventForm.get('start').dirty) &&
+              eventForm.get('start').hasError('required')
                 ? 'is-invalid'
-                : '' || createEventForm.get('start').hasError('minlength')
+                : '' || eventForm.get('start').hasError('minlength')
                 ? 'is-invalid'
                 : '' ||
-                  ((createEventForm.get('start').touched || createEventForm.get('start').dirty) &&
-                    !createEventForm.get('start').invalid)
+                  ((eventForm.get('start').touched || eventForm.get('start').dirty) && !eventForm.get('start').invalid)
                 ? 'is-valid'
                 : ''
             "
@@ -94,8 +91,8 @@
             required
           />
           <div class="invalid-feedback">
-            {{ createEventForm.get('start').hasError('required') ? 'Please provide a valid venue name' : '' }}
-            {{ createEventForm.get('start').hasError('minlength') ? '3 characters required' : '' }}
+            {{ eventForm.get('start').hasError('required') ? 'Please provide a valid venue name' : '' }}
+            {{ eventForm.get('start').hasError('minlength') ? '3 characters required' : '' }}
           </div>
         </div>
       </div>
@@ -108,14 +105,11 @@
             class="form-control"
             id="end"
             [ngClass]="
-              (createEventForm.get('end').touched || createEventForm.get('end').dirty) &&
-              createEventForm.get('end').hasError('required')
+              (eventForm.get('end').touched || eventForm.get('end').dirty) && eventForm.get('end').hasError('required')
                 ? 'is-invalid'
-                : '' || createEventForm.get('end').hasError('minlength')
+                : '' || eventForm.get('end').hasError('minlength')
                 ? 'is-invalid'
-                : '' ||
-                  ((createEventForm.get('end').touched || createEventForm.get('end').dirty) &&
-                    !createEventForm.get('end').invalid)
+                : '' || ((eventForm.get('end').touched || eventForm.get('end').dirty) && !eventForm.get('end').invalid)
                 ? 'is-valid'
                 : ''
             "
@@ -123,8 +117,8 @@
             required
           />
           <div class="invalid-feedback">
-            {{ createEventForm.get('end').hasError('required') ? 'Please provide a valid venue name' : '' }}
-            {{ createEventForm.get('end').hasError('minlength') ? '3 characters required' : '' }}
+            {{ eventForm.get('end').hasError('required') ? 'Please provide a valid venue name' : '' }}
+            {{ eventForm.get('end').hasError('minlength') ? '3 characters required' : '' }}
           </div>
         </div>
       </div>
@@ -138,14 +132,14 @@
             id="voucherQty"
             placeholder="Enter voucher quantity"
             [ngClass]="
-              (createEventForm.get('voucherQty').touched || createEventForm.get('voucherQty').dirty) &&
-              createEventForm.get('voucherQty').hasError('required')
+              (eventForm.get('voucherQty').touched || eventForm.get('voucherQty').dirty) &&
+              eventForm.get('voucherQty').hasError('required')
                 ? 'is-invalid'
-                : '' || createEventForm.get('voucherQty').hasError('minlength')
+                : '' || eventForm.get('voucherQty').hasError('minlength')
                 ? 'is-invalid'
                 : '' ||
-                  ((createEventForm.get('voucherQty').touched || createEventForm.get('voucherQty').dirty) &&
-                    !createEventForm.get('voucherQty').invalid)
+                  ((eventForm.get('voucherQty').touched || eventForm.get('voucherQty').dirty) &&
+                    !eventForm.get('voucherQty').invalid)
                 ? 'is-valid'
                 : ''
             "
@@ -153,12 +147,8 @@
             required
           />
           <div class="invalid-feedback">
-            {{
-              createEventForm.get('voucherQty').hasError('required')
-                ? 'Please provide a valid quantity of vouchers'
-                : ''
-            }}
-            {{ createEventForm.get('voucherQty').hasError('minlength') ? '3 characters required' : '' }}
+            {{ eventForm.get('voucherQty').hasError('required') ? 'Please provide a valid quantity of vouchers' : '' }}
+            {{ eventForm.get('voucherQty').hasError('minlength') ? '3 characters required' : '' }}
           </div>
         </div>
       </div>
@@ -172,16 +162,14 @@
             id="voucherQtyPerCustomer"
             placeholder="Enter voucher quantity"
             [ngClass]="
-              (createEventForm.get('voucherQtyPerCustomer').touched ||
-                createEventForm.get('voucherQtyPerCustomer').dirty) &&
-              createEventForm.get('voucherQtyPerCustomer').hasError('required')
+              (eventForm.get('voucherQtyPerCustomer').touched || eventForm.get('voucherQtyPerCustomer').dirty) &&
+              eventForm.get('voucherQtyPerCustomer').hasError('required')
                 ? 'is-invalid'
-                : '' || createEventForm.get('voucherQtyPerCustomer').hasError('minlength')
+                : '' || eventForm.get('voucherQtyPerCustomer').hasError('minlength')
                 ? 'is-invalid'
                 : '' ||
-                  ((createEventForm.get('voucherQtyPerCustomer').touched ||
-                    createEventForm.get('voucherQtyPerCustomer').dirty) &&
-                    !createEventForm.get('voucherQtyPerCustomer').invalid)
+                  ((eventForm.get('voucherQtyPerCustomer').touched || eventForm.get('voucherQtyPerCustomer').dirty) &&
+                    !eventForm.get('voucherQtyPerCustomer').invalid)
                 ? 'is-valid'
                 : ''
             "
@@ -190,11 +178,11 @@
           />
           <div class="invalid-feedback">
             {{
-              createEventForm.get('voucherQtyPerCustomer').hasError('required')
+              eventForm.get('voucherQtyPerCustomer').hasError('required')
                 ? 'Please provide a valid quantity of vouchers a customer can buy'
                 : ''
             }}
-            {{ createEventForm.get('voucherQtyPerCustomer').hasError('minlength') ? '3 characters required' : '' }}
+            {{ eventForm.get('voucherQtyPerCustomer').hasError('minlength') ? '3 characters required' : '' }}
           </div>
         </div>
       </div>
@@ -211,6 +199,6 @@
     </div>
   </div>
   <div class="form-row col-lg-12 p-1 mt-4">
-    <button class="btn btn-primary" type="submit" [disabled]="!createEventForm.valid">Create event</button>
+    <button class="btn btn-primary" type="submit" [disabled]="!eventForm.valid">Create event</button>
   </div>
 </form>

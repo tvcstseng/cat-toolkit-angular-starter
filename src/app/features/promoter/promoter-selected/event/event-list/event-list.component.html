@@ -5,7 +5,7 @@
     class="row"
     *ngFor="let event of Events"
     (click)="setFocussedEvent(event)"
-    routerLink="{{ event.uuid }}/manage-event"
+    routerLink="{{ event.uuid }}"
     routerLinkActive="selected"
   >
     <div class="col-lg-2">
