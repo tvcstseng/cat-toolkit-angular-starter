@@ -6,12 +6,12 @@ import { Constants } from '@app/config/constants';
 import { PromoterConstants } from '@app/features/promoter/promoter-constants';
 
 @Component({
-  selector: 'app-my-event-overview',
+  selector: 'app-event-list',
   templateUrl: './event-list.component.html',
   styleUrls: ['./event-list.component.scss'],
 })
 export class EventListComponent implements OnInit {
-  Events: EventDto[];
+  events: EventDto[];
 
   focussedEventDto: EventDto = new EventDto('', 'eventName', 'venueName', '', '', '', '', 0, 0, false);
 
@@ -29,8 +29,8 @@ export class EventListComponent implements OnInit {
   private refreshEvents() {
     // update the events
     this.getEvents().subscribe((res) => {
-      this.Events = res;
-      console.log(this.Events);
+      this.events = res;
+      console.log(this.events);
     });
   }
 

@@ -8,7 +8,7 @@ import { VenueDto } from '@app/features/dto/venue-dto';
 import { Constants } from '@app/config/constants';
 
 @Component({
-  selector: 'app-create-event',
+  selector: 'app-event-form',
   templateUrl: './event-form.component.html',
   styleUrls: ['./event-form.component.scss'],
 })

@@ -5,7 +5,7 @@ import { EventSelectedRoutingModule } from './event-selected-routing.module';
 import { EventViewComponent } from './event-view/event-view.component';
 
 @NgModule({
-  declarations: [EventViewComponent, EventViewComponent],
+  declarations: [EventViewComponent],
   imports: [CommonModule, EventSelectedRoutingModule, ReactiveFormsModule],
 })
 export class EventSelectedModule {}

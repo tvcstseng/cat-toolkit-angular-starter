@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SideBarComponent } from './side-bar.component';
+import { PromoterDashSideBarComponent } from './promoter-dash-side-bar.component';
 
 describe('SideBarComponent', () => {
-  let component: SideBarComponent;
-  let fixture: ComponentFixture<SideBarComponent>;
+  let component: PromoterDashSideBarComponent;
+  let fixture: ComponentFixture<PromoterDashSideBarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SideBarComponent],
+      declarations: [PromoterDashSideBarComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SideBarComponent);
+    fixture = TestBed.createComponent(PromoterDashSideBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

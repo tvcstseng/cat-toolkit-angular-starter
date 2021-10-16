@@ -5,7 +5,7 @@ import { SideBarMenuItem } from '@app/features/dto/side-bar-menu-item';
 @Injectable({
   providedIn: 'root',
 })
-export class SideBarService {
+export class PromoterDashSideBarService {
   private sideBarMenuItems: Observable<SideBarMenuItem[]>;
 
   constructor() {}

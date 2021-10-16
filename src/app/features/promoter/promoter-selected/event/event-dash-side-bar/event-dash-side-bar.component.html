@@ -1,0 +1,15 @@
+<div class="sidebar">
+  <div class="list-items">
+    <div
+      *ngFor="let sideBarMenuItem of sideBarMenuItems"
+      (click)="setFocussedItem(sideBarMenuItem)"
+      routerLink="{{ sideBarMenuItem.url }}"
+      routerLinkActive="selected"
+    >
+      <a routerLink="{{ sideBarMenuItem.url }}" routerLinkActive="selected" class="list-item">
+        <i class="material-icons">{{ sideBarMenuItem.materialIcon }}</i>
+        <span translate>{{ sideBarMenuItem.description }}</span>
+      </a>
+    </div>
+  </div>
+</div>
