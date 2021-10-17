@@ -1,12 +1,19 @@
-import { Routes, Route, ActivatedRoute } from '@angular/router';
-import { AuthGuard } from '@app/@core/auth/auth-guard.service';
-import { AuthGuardWithForcedLogin } from '@app/@core/auth/auth-guard-with-forced-login.service';
+import { Route, Routes } from '@angular/router';
 import { ShellComponent } from './shell.component';
+import { RouterStateService } from '@app/services/router-state.service';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { first, map, tap } from 'rxjs/operators';
+import { homeSearchQueryParamKey } from '@app/constants';
+import { Injectable } from '@angular/core';
 
 /**
  * Provides helper methods to create routes.
  */
-export class Shell {
+@Injectable()
+export class ShellService {
+  searchQuery: Observable<string | null>;
+  detailRouterEnabled: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+
   // pageTitle: string;
   // constructor(
   //   private route: ActivatedRoute
@@ -22,5 +29,31 @@ export class Shell {
       component: ShellComponent,
       children: routes,
     };
+  }
+
+  constructor(routerState: RouterStateService) {
+    this.searchQuery = routerState.queryParamsMap.pipe(map((queryParams) => queryParams.get(homeSearchQueryParamKey)));
+    console.log('Current searchQuery: ' + this.searchQuery);
+  }
+
+  setDetailRouterEnabled(enabled: boolean) {
+    this.detailRouterEnabled.next(enabled);
+
+    // this.detailRouterEnabled.pipe(map(this.detailRouterEnabled.)) = of(enabled);
+
+    // this.detailRouterEnabled = of(enabled);
+
+    // const addItem =
+    //   (item: any) => this.detailRouterEnabled.pipe(
+    //     first(),
+    //     tap(arr => this.detailRouterEnabled.next(enabled)),
+    //     first(),
+    //   )
+
+    // console.log(`ShellService setDetailRouterEnabled:${this.detailRouterEnabled as Observable<boolean>}`);
+  }
+
+  getDetailRouterEnabled(): BehaviorSubject<boolean> {
+    return this.detailRouterEnabled;
   }
 }

@@ -1,32 +1,26 @@
-<div class="page-container">
-  <app-event-dash-side-bar></app-event-dash-side-bar>
-  <div class="page-content-container">
-    <h1>My events</h1>
-
-    <div class="list-items">
-      <div
-        class="row"
-        *ngFor="let event of events"
-        (click)="setFocussedEvent(event)"
-        routerLink="{{ event.uuid }}"
-        routerLinkActive="selected"
-      >
-        <div class="col-lg-2">
-          <img
-            class="img-fluid"
-            src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS2Xjhc-NPN5UAWzKdY3Kpl29Tyt-zCC8aOd3Gez8i2zrF3BS9bSQ"
-          />
-        </div>
-        <div class="col-lg-10">
-          <div class="list-items">
-            <a class="list-item">
-              <h2>{{ event.name }}</h2>
-            </a>
-            <a class="list-item"> <span translate>Venue: </span>{{ event.venue }} </a>
-            <a class="list-item"> <span translate>Time: </span>{{ event.start }} </a>
-            <a class="list-item"> <span translate>Ends: </span>{{ event.end }} </a>
-          </div>
-        </div>
+<h1>My events</h1>
+<div class="list-items">
+  <div
+    class="row"
+    *ngFor="let event of events"
+    (click)="setFocussedEvent(event)"
+    routerLink="{{ event.uuid }}"
+    routerLinkActive="selected"
+  >
+    <div class="col-lg-2">
+      <img
+        class="img-fluid"
+        src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS2Xjhc-NPN5UAWzKdY3Kpl29Tyt-zCC8aOd3Gez8i2zrF3BS9bSQ"
+      />
+    </div>
+    <div class="col-lg-10">
+      <div class="list-items">
+        <a class="list-item">
+          <h2>{{ event.name }}</h2>
+        </a>
+        <a class="list-item"> <span translate>Venue: </span>{{ event.venue }} </a>
+        <a class="list-item"> <span translate>Time: </span>{{ event.start }} </a>
+        <a class="list-item"> <span translate>Ends: </span>{{ event.end }} </a>
       </div>
     </div>
   </div>

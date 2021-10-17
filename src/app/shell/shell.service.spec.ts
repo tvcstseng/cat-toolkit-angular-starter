@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { ShellComponent } from './shell.component';
-import { Shell } from './shell.service';
+import { ShellService } from './shell.service';
 
 describe('Shell', () => {
   beforeEach(() => {
@@ -16,7 +16,7 @@ describe('Shell', () => {
       const testRoutes = [{ path: 'test' }];
 
       // Act
-      const result = Shell.childRoutes(testRoutes);
+      const result = ShellService.childRoutes(testRoutes);
 
       // Assert
       expect(result.path).toBe('');

@@ -1,2 +1,9 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
+<div class="page-container">
+  <router-outlet></router-outlet>
+  <ng-container *ngIf="detailRouterEnabled() | async">
+    <div class="page-content-container">
+      <router-outlet #outlet="outlet" name="detail"></router-outlet>
+    </div>
+  </ng-container>
+</div>

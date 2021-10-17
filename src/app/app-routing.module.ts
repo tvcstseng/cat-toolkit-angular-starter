@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { Shell } from '@app/shell/shell.service';
+import { ShellService } from '@app/shell/shell.service';
 import { ShouldLoginComponent } from './should-login.component';
 
 const routes: Routes = [
-  Shell.childRoutes([
+  ShellService.childRoutes([
     {
       path: 'promoter',
       loadChildren: () => import('./features/promoter/promoter.module').then((m) => m.PromoterModule),
@@ -48,7 +48,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      enableTracing: true, // TODO: Remove for prod debugging purposes only
+      // enableTracing: true, // TODO: Remove for prod debugging purposes only
       preloadingStrategy: PreloadAllModules,
       paramsInheritanceStrategy: 'always',
     }),

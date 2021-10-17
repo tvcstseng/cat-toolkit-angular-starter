@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: () => import('../promoter-form/promoter-form.module').then((m) => m.PromoterFormModule),
   },
   {
-    path: 'events',
+    path: 'event',
     loadChildren: () => import('./event/event.module').then((m) => m.EventModule),
   },
 ];

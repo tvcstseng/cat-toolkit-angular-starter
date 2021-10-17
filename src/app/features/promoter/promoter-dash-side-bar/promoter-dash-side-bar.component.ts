@@ -17,7 +17,7 @@ export class PromoterDashSideBarComponent implements OnInit {
     // set the initial components menuBarItems
     this.sidebarService.setSideBarItems([
       {
-        url: ':1/events', // TODO: load promoter
+        url: ':1/event/(detail:list)', // TODO: load promoter
 
         // url: ['../' + this.focussedPromoterDto.uuid + '/my-event-overview'],
         // url: '/1/(detail:my-event-overview)',

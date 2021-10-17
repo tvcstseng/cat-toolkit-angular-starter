@@ -4,6 +4,7 @@ import { PromoterComponent } from '@app/features/promoter/promoter.component';
 import { PromoterConstants } from '@app/features/promoter/promoter-constants';
 import { RoleGuard } from '@core/auth/role-guard.service';
 import { AuthGuard } from '@core/auth/auth-guard.service';
+import { PromoterFormComponent } from '@app/features/promoter/promoter-form/promoter-form.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,11 @@ const routes: Routes = [
     data: {
       role: 'Promoter',
     },
+  },
+  {
+    path: 'new',
+    component: PromoterFormComponent,
+    outlet: 'detail',
   },
   // { path: '', component: PromoterComponent },
   // {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ShellService } from '@app/shell/shell.service';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-shell',
@@ -6,7 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shell.component.scss'],
 })
 export class ShellComponent implements OnInit {
-  constructor() {}
+  route: string;
+  detailRouterEnabled$!: BehaviorSubject<boolean>;
+  searchQuery: string;
 
-  ngOnInit() {}
+  constructor(private shellService: ShellService) {
+    if (window.location.href !== '') {
+      console.log('current route: ' + window.location.href);
+    } else {
+      console.log('current route: ' + window.location.href);
+    }
+  }
+
+  async ngOnInit() {
+    this.detailRouterEnabled$.next(this.shellService.getDetailRouterEnabled().getValue());
+  }
+
+  detailRouterEnabled(): BehaviorSubject<boolean> {
+    return this.shellService.getDetailRouterEnabled();
+  }
 }

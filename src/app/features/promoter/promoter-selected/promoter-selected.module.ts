@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PromoterSelectedRoutingModule } from './promoter-selected-routing.module';
 import { PromoterViewComponent } from './promoter-view/promoter-view.component';
+import { EventComponent } from './event/event.component';
+import { EventModule } from '@app/features/promoter/promoter-selected/event/event.module';
 
 @NgModule({
-  declarations: [PromoterViewComponent],
-  imports: [CommonModule, PromoterSelectedRoutingModule, ReactiveFormsModule],
+  declarations: [PromoterViewComponent, EventComponent],
+  imports: [CommonModule, PromoterSelectedRoutingModule, ReactiveFormsModule, EventModule],
 })
 export class PromoterSelectedModule {}
