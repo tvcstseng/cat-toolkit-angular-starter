@@ -6,7 +6,8 @@
       routerLink="{{ sideBarMenuItem.url }}"
       routerLinkActive="selected"
     >
-      <a routerLink="{{ sideBarMenuItem.url }}" routerLinkActive="selected" class="list-item">
+      <!--      <a routerLink="{{ sideBarMenuItem.url }}" routerLinkActive="selected" class="list-item">-->
+      <a [routerLink]="[{ outlets: { detail: ['new'] } }]" routerLinkActive="selected" class="list-item">
         <i class="material-icons">{{ sideBarMenuItem.materialIcon }}</i>
         <span translate>{{ sideBarMenuItem.description }}</span>
       </a>

@@ -42,13 +42,13 @@ const routes: Routes = [
 
   { path: 'should-login', component: ShouldLoginComponent },
   // Fallback when no prior route is matched
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  // { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      // enableTracing: true, // TODO: Remove for prod debugging purposes only
+      enableTracing: true, // TODO: Remove for prod debugging purposes only
       preloadingStrategy: PreloadAllModules,
       paramsInheritanceStrategy: 'always',
     }),
