@@ -1,9 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { Logger } from '@core';
 import { ShellService } from '@app/shell/shell.service';
-
-const log = new Logger('app-home');
 
 @Component({
   selector: 'app-home',

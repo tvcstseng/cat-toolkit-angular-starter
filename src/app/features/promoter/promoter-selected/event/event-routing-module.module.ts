@@ -22,11 +22,6 @@ const routes: Routes = [
     outlet: 'detail',
   },
   {
-    path: `:${PromoterConstants.EVENT_ID_PARAM}`,
-    loadChildren: () => import('./event-selected/event-selected.module').then((m) => m.EventSelectedModule),
-    outlet: 'detail',
-  },
-  {
     path: 'list',
     component: EventListComponent,
     outlet: 'detail',
@@ -34,6 +29,11 @@ const routes: Routes = [
     data: {
       role: 'Promoter',
     },
+  },
+  {
+    path: `:${PromoterConstants.EVENT_ID_PARAM}`,
+    loadChildren: () => import('./event-selected/event-selected.module').then((m) => m.EventSelectedModule),
+    outlet: 'detail',
   },
 ];
 

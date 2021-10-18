@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ShellService } from '@app/shell/shell.service';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-shell',
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.scss'],
 })
-export class ShellComponent implements OnInit {
+export class ShellComponent implements OnInit, AfterViewInit {
   route: string;
-  detailRouterEnabled$!: BehaviorSubject<boolean>;
+  detailRouterEnabled$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   searchQuery: string;
 
-  constructor(private shellService: ShellService) {
+  constructor(private shellService: ShellService, private cd: ChangeDetectorRef) {
     if (window.location.href !== '') {
       console.log('current route: ' + window.location.href);
     } else {
@@ -26,5 +26,11 @@ export class ShellComponent implements OnInit {
 
   detailRouterEnabled(): BehaviorSubject<boolean> {
     return this.shellService.getDetailRouterEnabled();
+  }
+
+  ngAfterViewInit(): void {
+    this.detailRouterEnabled$.next(this.shellService.getDetailRouterEnabled().getValue());
+    this.cd.detectChanges();
+    console.log('ShellComponent: Changes detected: ' + this.detailRouterEnabled$.getValue());
   }
 }
