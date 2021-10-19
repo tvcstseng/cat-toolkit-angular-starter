@@ -3,7 +3,7 @@
   <router-outlet></router-outlet>
   <ng-container *ngIf="detailRouterEnabled$ | async">
     <div class="page-content-container">
-      <router-outlet #outlet="outlet" name="detail"></router-outlet>
+      <router-outlet name="detail"></router-outlet>
     </div>
   </ng-container>
 </div>

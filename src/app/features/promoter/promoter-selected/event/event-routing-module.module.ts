@@ -15,12 +15,6 @@ const routes: Routes = [
       role: 'Promoter',
     },
   },
-
-  {
-    path: 'new',
-    loadChildren: () => import('./event-form/event-form.module').then((m) => m.EventFormModule),
-    outlet: 'detail',
-  },
   {
     path: 'list',
     component: EventListComponent,
@@ -31,9 +25,14 @@ const routes: Routes = [
     },
   },
   {
+    path: 'new',
+    loadChildren: () => import('./event-form/event-form.module').then((m) => m.EventFormModule),
+    outlet: 'detail',
+  },
+  {
     path: `:${PromoterConstants.EVENT_ID_PARAM}`,
     loadChildren: () => import('./event-selected/event-selected.module').then((m) => m.EventSelectedModule),
-    outlet: 'detail',
+    // outlet: 'detail',
   },
 ];
 
