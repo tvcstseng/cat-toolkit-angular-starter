@@ -8,14 +8,6 @@ import { RoleGuard } from '@core/auth/role-guard.service';
 
 const routes: Routes = [
   {
-    path: '',
-    component: EventComponent,
-    canActivate: [AuthGuard, RoleGuard],
-    data: {
-      role: 'Promoter',
-    },
-  },
-  {
     path: 'list',
     component: EventListComponent,
     outlet: 'detail',
@@ -30,9 +22,17 @@ const routes: Routes = [
     outlet: 'detail',
   },
   {
-    path: `:${PromoterConstants.EVENT_ID_PARAM}`,
+    path: `event-selected/:${PromoterConstants.EVENT_ID_PARAM}`,
     loadChildren: () => import('./event-selected/event-selected.module').then((m) => m.EventSelectedModule),
     // outlet: 'detail',
+  },
+  {
+    path: '',
+    component: EventComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      role: 'Promoter',
+    },
   },
 ];
 

@@ -1,12 +1,38 @@
 <h1>My events</h1>
 <div class="list-items">
-  <div
-    class="row"
-    *ngFor="let event of events"
-    (click)="setFocussedEvent(event)"
-    routerLink="../{{ event.uuid }}"
-    routerLinkActive="selected"
-  >
+  <!--  <div-->
+  <!--    class="row"-->
+  <!--    *ngFor="let event of events"-->
+  <!--    (click)="setFocussedEvent(event)"-->
+  <!--    routerLink="../{{ event.uuid }}/(detail:null)"-->
+  <!--    routerLinkActive="selected"-->
+  <!--  >  -->
+  <!--    [routerLink]="['../event/{{event.uuid}}', { outlets: { primary: ['{{event.uuid}}'], detail: ['edit'] } }]"-->
+  <!--  [routerLink]="['../event', { outlets: { primary: ['{{event.uuid}}'], detail: ['edit'] } }]"-->
+  <!--  routerLink="../event/{{ event.uuid }}/(detail:null)"-->
+
+  <!--  <div-->
+  <!--    class='row'-->
+  <!--    *ngFor='let event of events'-->
+  <!--    (click)='setFocussedEvent(event)'-->
+
+  <!--    routerLink="[-->
+  <!--      {-->
+  <!--        outlets: {-->
+  <!--          primary: [-->
+  <!--            {{ event.uuid }}-->
+  <!--          ]-->
+  <!--          , detail: [-->
+  <!--            null-->
+  <!--          ]-->
+  <!--        }-->
+  <!--      }-->
+  <!--    ]"-->
+  <!--    routerLinkActive='selected'-->
+  <!--  >-->
+
+  <!--  [routerLink]="[ { outlets: { primary: [  '../event/' +event.uuid  ] , detail: [ null ] } } ]"-->
+  <div class="row" *ngFor="let event of events" (click)="setFocussedEvent(event)" routerLinkActive="selected">
     <div class="col-lg-2">
       <img
         class="img-fluid"

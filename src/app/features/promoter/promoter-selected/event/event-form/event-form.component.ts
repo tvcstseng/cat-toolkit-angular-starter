@@ -6,6 +6,7 @@ import { ApiHttpService } from '@app/services/api-http.service';
 import { EventDto } from '@app/features/dto/event-dto';
 import { VenueDto } from '@app/features/dto/venue-dto';
 import { Constants } from '@app/config/constants';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-form',
@@ -35,7 +36,13 @@ export class EventFormComponent implements OnInit {
 
   venueListByName: string[] = [];
 
-  constructor(private constants: Constants, private fb: FormBuilder, private apiHttpService: ApiHttpService) {}
+  constructor(
+    private constants: Constants,
+    private fb: FormBuilder,
+    private apiHttpService: ApiHttpService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
   onDateClick(res: any) {
     alert('Clicked on date : ' + res.dateStr);
@@ -65,6 +72,28 @@ export class EventFormComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  // goback
+  // I attempt to close the chat by nullifying the secondary outlet using the PARENT'S
+  // ACTIVATED ROUTE.
+  public goBack(): void {
+    this.router.navigate(['', { outlets: { detail: ['list'] } }], { relativeTo: this.activatedRoute.parent });
+    // this.router.navigate(
+    //   [
+    //     // NOTE: No relative-path navigation is required because we are accessing
+    //     // the parent's "activatedRoute" instance. As such, this will be executed
+    //     // as if we were doing this in the parent view component.
+    //     {
+    //       outlets: {
+    //         detail: ['list']
+    //       }
+    //     }
+    //   ],
+    //   {
+    //     relativeTo: this.activatedRoute.parent // <--- PARENT activated route.
+    //   }
+    // );
   }
 
   private updateEvents() {

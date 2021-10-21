@@ -1,5 +1,5 @@
 <div class="sidebar">
-  <h1>Event Sidebar</h1>
+  <h3>Event Selected Sidebar</h3>
   <div class="list-items">
     <div
       *ngFor="let sideBarMenuItem of sideBarMenuItems"
@@ -7,8 +7,12 @@
       routerLink="{{ sideBarMenuItem.url }}"
       routerLinkActive="selected"
     >
-      <!--      <a routerLink="{{ sideBarMenuItem.url }}" routerLinkActive="selected" class="list-item">-->
-      <a [routerLink]="['../event', { outlets: { detail: 'new' } }]" routerLinkActive="selected" class="list-item">
+      <a
+        [routerLink]="['../event-selected', { outlets: { detail: 'onboard-customer' } }]"
+        routerLinkActive="selected"
+        class="list-item"
+      >
+        <!--      <a routerLink="{{ sideBarMenuItem.url }}" routerLinkActive="selected" class="list-item">-->
         <i class="material-icons">{{ sideBarMenuItem.materialIcon }}</i>
         <span translate>{{ sideBarMenuItem.description }}</span>
       </a>

@@ -1,0 +1,42 @@
+<span translate> Onboard customer to {{ focussedEventDto.name }} </span>
+
+<form [formGroup]="onboardCustomerForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="form-row col-sm-12 p-1">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          placeholder="Enter email"
+          [ngClass]="
+            (onboardCustomerForm.get('email').touched || onboardCustomerForm.get('email').dirty) &&
+            onboardCustomerForm.get('email').hasError('required')
+              ? 'is-invalid'
+              : '' || onboardCustomerForm.get('email').hasError('minlength')
+              ? 'is-invalid'
+              : '' ||
+                ((onboardCustomerForm.get('email').touched || onboardCustomerForm.get('email').dirty) &&
+                  !onboardCustomerForm.get('email').invalid)
+              ? 'is-valid'
+              : ''
+          "
+          formControlName="email"
+          required
+        />
+        <div class="invalid-feedback">
+          {{ onboardCustomerForm.get('email').hasError('required') ? 'Please provide a valid email' : '' }}
+          {{ onboardCustomerForm.get('email').hasError('minlength') ? '3 characters required' : '' }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Payment type -->
+  <!-- Submit -->
+  <div class="form-row col-sm-12 p-1 mt-4">
+    <button class="btn btn-primary" type="submit" [disabled]="onboardCustomerForm.invalid">
+      Onboard {{ onboardCustomerForm.value['name'] + ' ' + onboardCustomerForm.value['surname'] }}
+    </button>
+  </div>
+</form>

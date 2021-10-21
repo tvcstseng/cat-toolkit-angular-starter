@@ -9,5 +9,6 @@ import { EventModule } from '@app/features/promoter/promoter-selected/event/even
 @NgModule({
   declarations: [PromoterViewComponent, EventComponent],
   imports: [CommonModule, PromoterSelectedRoutingModule, ReactiveFormsModule, EventModule],
+  exports: [EventComponent],
 })
 export class PromoterSelectedModule {}

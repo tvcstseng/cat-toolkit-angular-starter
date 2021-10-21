@@ -3,6 +3,10 @@
   <router-outlet></router-outlet>
   <ng-container *ngIf="detailRouterEnabled$ | async">
     <div class="page-content-container">
+      <a class="back" (click)="goBack()" routerLinkActive="selected">
+        testlink
+        <i class="material-icons">arrow_back</i>
+      </a>
       <router-outlet name="detail"></router-outlet>
     </div>
   </ng-container>

@@ -1,19 +1,22 @@
-<div class="page-content-container">
-  <div class="row">
-    <div class="col-lg-2">
-      <img
-        class="img-fluid"
-        src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS2Xjhc-NPN5UAWzKdY3Kpl29Tyt-zCC8aOd3Gez8i2zrF3BS9bSQ"
-      />
-    </div>
-    <div class="col-lg-10">
-      <div class="list-items">
-        <a class="list-item">
-          <h2>{{ focussedEventDto.name }}</h2>
-        </a>
-        <a class="list-item"> <span translate>Venue: </span>{{ focussedEventDto.venue }} </a>
-        <a class="list-item"> <span translate>Time: </span>{{ focussedEventDto.start }} </a>
-        <a class="list-item"> <span translate>Ends: </span>{{ focussedEventDto.end }} </a>
+<div class="page-container" style="width: 100%">
+  <app-event-selected-sidebar></app-event-selected-sidebar>
+  <div class="page-content-container">
+    <div class="row">
+      <div class="col-lg-2">
+        <img
+          class="img-fluid"
+          src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS2Xjhc-NPN5UAWzKdY3Kpl29Tyt-zCC8aOd3Gez8i2zrF3BS9bSQ"
+        />
+      </div>
+      <div class="col-lg-10">
+        <div class="list-items">
+          <a class="list-item">
+            <h2>{{ focussedEventDto.name }}</h2>
+          </a>
+          <a class="list-item"> <span translate>Venue: </span>{{ focussedEventDto.venue }} </a>
+          <a class="list-item"> <span translate>Time: </span>{{ focussedEventDto.start }} </a>
+          <a class="list-item"> <span translate>Ends: </span>{{ focussedEventDto.end }} </a>
+        </div>
       </div>
     </div>
   </div>

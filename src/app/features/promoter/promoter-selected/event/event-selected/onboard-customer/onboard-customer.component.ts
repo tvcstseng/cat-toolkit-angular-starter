@@ -19,16 +19,7 @@ export class OnboardCustomerComponent implements OnInit {
   customer: CustomerDto;
 
   onboardCustomerForm = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(2)]],
-    surname: ['', [Validators.required, Validators.minLength(2)]],
     email: ['', [Validators.required, Validators.email]], // TODO: valid date validator
-    phoneNumber: ['', [Validators.required, Validators.minLength(7)]], // TODO: valid date validator
-    address: ['', [Validators.required, Validators.minLength(3)]],
-    addressNr: ['', [Validators.required, Validators.minLength(1)]],
-    city: ['', [Validators.required, Validators.minLength(3)]],
-    state: ['', [Validators.required, Validators.minLength(3)]],
-    country: ['', [Validators.required, Validators.minLength(3)]],
-    postalCode: ['', [Validators.required, Validators.minLength(3)]],
   });
 
   private routeSub: Subscription;

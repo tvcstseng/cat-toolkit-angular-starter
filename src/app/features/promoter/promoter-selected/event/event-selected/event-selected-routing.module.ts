@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-import { EventViewComponent } from './event-view/event-view.component';
+import { RouterModule, Routes } from '@angular/router';
+import { OnboardCustomerComponent } from '@app/features/promoter/promoter-selected/event/event-selected/onboard-customer/onboard-customer.component';
+import { EventSelectedComponent } from '@app/features/promoter/promoter-selected/event/event-selected/event-selected.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: EventViewComponent,
+    component: EventSelectedComponent,
+  },
+  {
+    path: 'onboard-customer',
+    component: OnboardCustomerComponent,
+    outlet: 'detail',
   },
   {
     path: 'edit',
