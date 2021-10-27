@@ -7,15 +7,14 @@
       routerLink="{{ sideBarMenuItem.url }}"
       routerLinkActive="selected"
     >
-      <a
-        [routerLink]="['../event-selected', { outlets: { detail: 'onboard-customer' } }]"
-        routerLinkActive="selected"
-        class="list-item"
-      >
-        <!--      <a routerLink="{{ sideBarMenuItem.url }}" routerLinkActive="selected" class="list-item">-->
-        <i class="material-icons">{{ sideBarMenuItem.materialIcon }}</i>
-        <span translate>{{ sideBarMenuItem.description }}</span>
-      </a>
+      <!--      <a-->
+      <!--        [routerLink]="['../event-selected', { outlets: { detail: 'onboard-customer' } }]"-->
+      <!--        routerLinkActive="selected"-->
+      <!--        class="list-item"-->
+      <!--      >-->
+      <!--      <a routerLink="{{ sideBarMenuItem.url }}" routerLinkActive="selected" class="list-item">-->
+      <i class="material-icons">{{ sideBarMenuItem.materialIcon }}</i>
+      <span translate>{{ sideBarMenuItem.description }}</span>
     </div>
   </div>
 </div>

@@ -33,6 +33,16 @@ export class EventListComponent implements OnInit {
     this.closeDetailViaParent();
   }
 
+  // http://localhost:4200/promoter/1/event/event-selected/1534ca1d-fae1-4a4c-97eb-3cf1695a575b/(detail:edit)
+  // public closeDetailViaParent(): void {
+  //   this.router.navigate(
+  //     ['/promoter/1/event/event-selected/1534ca1d-fae1-4a4c-97eb-3cf1695a575b/(detail:edit)'],
+  //     {
+  //       relativeTo: this.activatedRoute.parent // <--- PARENT activated route.
+  //     }
+  //   );
+  // }
+
   // I attempt to close the chat by nullifying the secondary outlet using the PARENT'S
   // ACTIVATED ROUTE.
   public closeDetailViaParent(): void {

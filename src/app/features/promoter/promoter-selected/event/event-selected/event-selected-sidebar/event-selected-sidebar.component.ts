@@ -41,6 +41,8 @@ export class EventSelectedSidebarComponent implements OnInit, OnDestroy {
     this.sidebarService.getSideBarItems().subscribe((result: SideBarMenuItem[]) => {
       this.sideBarMenuItems = result;
     });
+
+    this.router.navigate([this.router.url + '/', { outlets: { detail: 'edit' } }]);
   }
 
   setFocussedItem(sideBarMenuItem: SideBarMenuItem) {

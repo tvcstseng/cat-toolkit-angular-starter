@@ -5,10 +5,6 @@ import { EventSelectedComponent } from '@app/features/promoter/promoter-selected
 
 const routes: Routes = [
   {
-    path: '',
-    component: EventSelectedComponent,
-  },
-  {
     path: 'onboard-customer',
     component: OnboardCustomerComponent,
     outlet: 'detail',
@@ -16,6 +12,11 @@ const routes: Routes = [
   {
     path: 'edit',
     loadChildren: () => import('../event-form/event-form.module').then((m) => m.EventFormModule),
+    outlet: 'detail',
+  },
+  {
+    path: '',
+    component: EventSelectedComponent,
   },
 ];
 
