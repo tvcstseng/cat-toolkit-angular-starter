@@ -17,18 +17,10 @@ export class EventDashSideBarComponent implements OnInit {
     // set the initial components menuBarItems
     this.sidebarService.setSideBarItems([
       {
-        // url: '../event(detail:new)', // TODO: load promoter
-        url: `[{ outlets: { detail: ['new'] } }]`,
-        // url: ['../' + this.focussedPromoterDto.uuid + '/my-event-overview'],
-        // url: '/1/(detail:my-event-overview)',
+        url: 'new',
         materialIcon: 'add',
         description: 'Create event',
       },
-      // , {
-      //   url: '../' + this.focussedPromoterDto.uuid + '/create-event',
-      //   materialIcon: 'chevron_right',
-      //   description: 'Create Event'
-      // }
     ]);
     // subscribe to the observable to get changes when other components have focus
     this.sidebarService.getSideBarItems().subscribe((result: SideBarMenuItem[]) => {

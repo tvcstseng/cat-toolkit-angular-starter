@@ -7,25 +7,7 @@ import { AuthGuard } from '@core/auth/auth-guard.service';
 import { RoleGuard } from '@core/auth/role-guard.service';
 
 const routes: Routes = [
-  {
-    path: 'list',
-    component: EventListComponent,
-    outlet: 'detail',
-    canActivate: [AuthGuard, RoleGuard],
-    data: {
-      role: 'Promoter',
-    },
-  },
-  {
-    path: 'new',
-    loadChildren: () => import('./event-form/event-form.module').then((m) => m.EventFormModule),
-    outlet: 'detail',
-  },
-  {
-    path: `event-selected/:${PromoterConstants.EVENT_ID_PARAM}`,
-    loadChildren: () => import('./event-selected/event-selected.module').then((m) => m.EventSelectedModule),
-    // outlet: 'detail',
-  },
+  // Explicity mention name router outlet as children
   {
     path: '',
     component: EventComponent,
@@ -33,6 +15,27 @@ const routes: Routes = [
     data: {
       role: 'Promoter',
     },
+    children: [
+      {
+        path: 'list',
+        component: EventListComponent,
+        outlet: 'detailEvent',
+        canActivate: [AuthGuard, RoleGuard],
+        data: {
+          role: 'Promoter',
+        },
+      },
+      {
+        path: 'new',
+        loadChildren: () => import('./event-form/event-form.module').then((m) => m.EventFormModule),
+        outlet: 'detailEvent',
+      },
+      {
+        path: `event-selected/:${PromoterConstants.EVENT_ID_PARAM}`,
+        loadChildren: () => import('./event-selected/event-selected.module').then((m) => m.EventSelectedModule),
+        // outlet: 'detail',
+      },
+    ],
   },
 ];
 
